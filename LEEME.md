@@ -8,9 +8,16 @@ PWA estática. Funciona offline, se instala desde el navegador.
 
 Tiene que ser por HTTPS (los dos lo son) para que se pueda instalar y funcione offline.
 
-## Instalar en cada tablet
-Abrí el link en Chrome → menú ⋮ → "Instalar app" / "Agregar a pantalla principal".
-Una vez abierta una vez, ya anda sin internet.
+## Instalar en cada tablet (Android)
+1. Abrí el link en **Chrome** (no desde WhatsApp ni Instagram: ahí se abre un navegador interno que no instala).
+2. Esperá unos segundos en la pantalla de inicio: aparece el botón **INSTALAR** debajo de JUGAR. Tocalo y aceptá.
+   Si no aparece: menú ⋮ → **Instalar app** (o "Agregar a pantalla principal").
+3. Queda el ícono en la pantalla de la tablet. Se abre a pantalla completa y vertical.
+4. Abrila una vez con internet: desde ahí ya anda sin conexión.
+
+En iPad: Safari → botón Compartir → "Agregar a pantalla de inicio" (en iPad no aparece el botón INSTALAR).
+
+El récord y el sonido se guardan en cada tablet por separado.
 
 ## Editar temáticas y dificultad
 Todo está en `datos.js` (comentado). Después de cualquier cambio:
@@ -28,4 +35,4 @@ Agregá la ruta también a la lista `ARCHIVOS` de `sw.js` para que esté disponi
 - `juego.js` — lógica del juego
 - `datos.js` — temáticas y curva de dificultad (lo que se edita)
 - `sw.js` — offline
-- `manifest.webmanifest`, `iconos/`, `fuentes/` — instalación, íconos y tipografía Fredoka
+- `manifest.webmanifest`, `iconos/`, `capturas/`, `fuentes/` — instalación, íconos, capturas del cartel de instalación y tipografía Fredoka

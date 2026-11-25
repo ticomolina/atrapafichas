@@ -1,7 +1,7 @@
 /* Service worker de ATRAPA FICHAS — funciona offline.
    Cada vez que cambies algún archivo (por ejemplo datos.js),
    subí este número para que las tablets bajen la versión nueva. */
-const VERSION = "atrapa-v1";
+const VERSION = "atrapa-v2";
 
 const ARCHIVOS = [
   "./",

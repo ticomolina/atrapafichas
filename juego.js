@@ -637,6 +637,23 @@
     }, 120);
   });
 
+  // ---------- instalar la app ----------
+  // Chrome/Android avisa cuando la app se puede instalar: ahí mostramos el botón.
+  let avisoInstalar = null;
+  addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    avisoInstalar = e;
+    $("#btn-instalar").hidden = false;
+  });
+  $("#btn-instalar").addEventListener("click", async () => {
+    if (!avisoInstalar) return;
+    avisoInstalar.prompt();
+    await avisoInstalar.userChoice.catch(() => {});
+    avisoInstalar = null;
+    $("#btn-instalar").hidden = true;
+  });
+  addEventListener("appinstalled", () => { $("#btn-instalar").hidden = true; });
+
   // arranque
   pintarBotonesSonido();
   document.fonts && document.fonts.ready.then(armarInicio);
