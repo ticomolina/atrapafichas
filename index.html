@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#8B7FE8">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Atrapa Fichas">
+  <title>ATRAPA FICHAS</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="iconos/icono-192.png">
+  <link rel="apple-touch-icon" href="iconos/icono-180.png">
+  <link rel="preload" href="fuentes/fredoka.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- Fondo temático -->
+  <div id="fondo" aria-hidden="true">
+    <div class="fondo-deco"></div>
+    <div class="loma loma-atras"></div>
+    <div class="loma loma-adelante"></div>
+  </div>
+
+  <!-- ============ INICIO ============ -->
+  <section id="pantalla-inicio" class="pantalla activa">
+    <div class="barra-superior">
+      <button class="boton-redondo boton-sonido" aria-label="Sonido"></button>
+      <div class="record-chip"><span class="trofeo">🏆</span><span class="record-num">0</span></div>
+    </div>
+    <h1 class="titulo-arcoiris" aria-label="ATRAPA FICHAS"></h1>
+    <div class="pila-inicio" aria-hidden="true"></div>
+    <button class="boton-grande boton-verde" id="btn-jugar">JUGAR</button>
+  </section>
+
+  <!-- ============ JUEGO ============ -->
+  <section id="pantalla-juego" class="pantalla">
+    <header class="juego-cabecera">
+      <div class="estrella-contador" aria-label="Estrellas">
+        <svg viewBox="0 0 100 100"><path class="estrella-forma" d="M50 5 L62 36 L95 38 L69 59 L78 92 L50 74 L22 92 L31 59 L5 38 L38 36 Z"/></svg>
+        <span class="estrellas-num">0</span>
+      </div>
+      <div class="titulo-juego">ATRAPA FICHAS</div>
+      <button class="boton-redondo boton-azul" id="btn-casa" aria-label="Inicio">
+        <svg class="icono-casa" viewBox="0 0 100 100"><path d="M50 14 L90 50 H78 V86 H60 V64 H40 V86 H22 V50 H10 Z" fill="#fff" stroke="#fff" stroke-width="6" stroke-linejoin="round"/></svg>
+      </button>
+    </header>
+    <div class="objetivos"></div>
+    <div class="vidas"></div>
+    <div class="tablero-zona">
+      <div class="tablero"></div>
+    </div>
+    <div class="nivel-control">
+      <button class="nivel-boton" id="btn-nivel-menos" aria-label="Nivel anterior">−</button>
+      <span class="nivel-texto">NIVEL <b class="nivel-num">1</b></span>
+      <button class="nivel-boton" id="btn-nivel-mas" aria-label="Nivel siguiente">+</button>
+    </div>
+  </section>
+
+  <!-- ============ FESTEJO ENTRE NIVELES ============ -->
+  <div id="capa-festejo" class="capa">
+    <div class="festejo-caja">
+      <div class="festejo-texto">¡MUY BIEN!</div>
+      <div class="festejo-estrellas"></div>
+    </div>
+  </div>
+
+  <!-- ============ PAUSA ============ -->
+  <div id="capa-pausa" class="capa capa-oscura">
+    <div class="tarjeta">
+      <div class="tarjeta-titulo">PAUSA</div>
+      <button class="boton-grande boton-verde" id="btn-seguir">SEGUIR</button>
+      <button class="boton-grande boton-naranja" id="btn-otra-vez">OTRA VEZ</button>
+      <button class="boton-grande boton-azul-claro" id="btn-inicio">INICIO</button>
+      <button class="boton-redondo boton-sonido boton-sonido-tarjeta" aria-label="Sonido"></button>
+    </div>
+  </div>
+
+  <!-- ============ FIN DE PARTIDA ============ -->
+  <div id="capa-fin" class="capa capa-oscura">
+    <div class="tarjeta">
+      <div class="tarjeta-titulo fin-titulo">¡BUEN JUEGO!</div>
+      <div class="fin-estrellas">
+        <svg viewBox="0 0 100 100"><path class="estrella-forma" d="M50 5 L62 36 L95 38 L69 59 L78 92 L50 74 L22 92 L31 59 L5 38 L38 36 Z"/></svg>
+        <span class="fin-estrellas-num">0</span>
+      </div>
+      <div class="fin-record"><span class="trofeo">🏆</span> RÉCORD <span class="fin-record-num">0</span></div>
+      <button class="boton-grande boton-verde" id="btn-fin-otra">JUGAR OTRA VEZ</button>
+      <button class="boton-grande boton-azul-claro" id="btn-fin-inicio">INICIO</button>
+    </div>
+  </div>
+
+  <canvas id="confeti" aria-hidden="true"></canvas>
+
+  <script src="datos.js"></script>
+  <script src="juego.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>
